@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import NavBar from "./NavBar";
+import { Routes, Route, Link } from "react-router-dom";
+import Maintenance from "./Maintenance";
+import Profile from "./Profile";
+import Schedule from "./Schedule";
+import Footer from "./Footer";
+import ProfileCopy from "./ProfileCopy";
+import NavBarCopy from "./NavBarCopy";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* <NavBar /> */}
+      <NavBarCopy />
+      <Routes>
+        <Route path="schedule" element={<Schedule />} />
+        <Route path="maintenance" element={<Maintenance />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="profilecopy" element={<ProfileCopy />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
