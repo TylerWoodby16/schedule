@@ -6,8 +6,14 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
-import { useState } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import momPhoto from "./assets/mom.jpg";
+
+type User = {
+  name: string;
+  username: string;
+  phone: string;
+};
 
 function ProfileCopy() {
   const [query, setQuery] = useState("");
@@ -15,7 +21,33 @@ function ProfileCopy() {
   const [showDocuments, setShowDocuments] = useState(false);
   const [showEndorsements, setShowEndorsements] = useState(false);
   const [showCourseEnrollment, setShowCourseEnrollment] = useState(false);
-  const [showNotes, setShowNotes] = useState(false)
+  const [showNotes, setShowNotes] = useState(false);
+  const [currentUser, setCurrentUser] = useState<User>({
+    name: "",
+    username: "",
+    phone: "",
+  });
+
+  useMemo(() => {
+    const user: User = {
+      name: "tyler",
+      username: "tylerWoodby",
+      phone: "666666",
+    };
+    // Insert FAKE DATA into local storage
+    localStorage.setItem("user", JSON.stringify(user));
+
+    // Retrieve FAKE DATA from local storage.
+    const currentUserObjectString = localStorage.getItem("user");
+    if(currentUserObjectString) {
+      const currentUser: User = JSON.parse(currentUserObjectString);
+      setCurrentUser(currentUser);
+    }
+
+    // TODO: Actually get the data from API.
+  }, [setCurrentUser, currentUser]);
+
+  console.log("are we looping?");
 
   const documentClick = () => {
     setShowMenu(false);
@@ -31,7 +63,7 @@ function ProfileCopy() {
     setShowMenu(false);
     setShowCourseEnrollment(true);
   };
-  
+
   const notesClick = () => {
     setShowMenu(false);
     setShowNotes(true);
@@ -81,9 +113,9 @@ function ProfileCopy() {
         <Col>
           <Row>
             <Col>
-              <p className="m-1">Name: Tyler Woodby</p>
-              <p className="m-1">Phone: 2055852111</p>
-              <p className="m-1">Username: tylerwoodby16</p>
+              <p className="m-1">Name: {currentUser.name}</p>
+              <p className="m-1">Phone: {currentUser.phone}</p>
+              <p className="m-1">Username: {currentUser.username}</p>
               <p className="m-1">Email: tylerwoodby16@gmail.com</p>
               <p className="m-1">Role: Instructor</p>
               <p className="m-1">Active: yes</p>
@@ -134,12 +166,12 @@ function ProfileCopy() {
         <Row>
           <Col>
             <div className="d-grid gap-2">
-            <Button
+              <Button
                 onClick={() => courseenrollmentClick()}
                 variant="secondary"
                 size="lg"
               >
-                Endorsements
+                Course Enrollments
               </Button>
             </div>
           </Col>
@@ -148,7 +180,7 @@ function ProfileCopy() {
           <Col>
             {" "}
             <div className="d-grid gap-2">
-            <Button
+              <Button
                 onClick={() => notesClick()}
                 variant="secondary"
                 size="lg"
