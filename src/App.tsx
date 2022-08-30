@@ -7,6 +7,9 @@ import Profile from "./Profile";
 import Schedule from "./Schedule";
 import Aircraft from "./Aircraft";
 import Footer from "./Footer";
+import LogIn from "./LogIn";
+import Landing from "./Landing";
+import SignIn from "./SignIn";
 
 
 function App() {
@@ -18,6 +21,9 @@ function App() {
         <Route path="/maintenance" element={<Maintenance />} />
         <Route path="/maintenance/:aircraftId" element={<Aircraft />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/landing" element={<Landing />} />
       </Routes>
       <Footer />
     </div>

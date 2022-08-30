@@ -38,6 +38,15 @@ function NavBar() {
                   <Nav.Link as={Link} to="/maintenance">
                     Maintenance
                   </Nav.Link>
+                  <Nav.Link as={Link} to="/login">
+                    LogIn
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/landing">
+                    Landing
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/signin">
+                    SignIn
+                  </Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Container>
