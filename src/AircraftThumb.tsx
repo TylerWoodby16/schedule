@@ -15,7 +15,7 @@ type AirplaneProps = {
 const Airplane: React.FC<AirplaneProps> = ({ image, name }) => {
   return (
     <>
-      <Image src={image} width="100" />
+      <Image src={image} width="300" />
       {name}
     </>
   );

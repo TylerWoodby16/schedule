@@ -7,9 +7,11 @@ import Profile from "./Profile";
 import Schedule from "./Schedule";
 import Aircraft from "./Aircraft";
 import Footer from "./Footer";
-import LogIn from "./LogIn";
+import Signup from "./Signup";
+import Login from "./Login";
 import Landing from "./Landing";
-import SignIn from "./SignIn";
+import ForgotPassword from "./ForgotPassword";
+
 
 
 function App() {
@@ -21,9 +23,10 @@ function App() {
         <Route path="/maintenance" element={<Maintenance />} />
         <Route path="/maintenance/:aircraftId" element={<Aircraft />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/landing" element={<Landing />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/" element={<Landing />} />
       </Routes>
       <Footer />
     </div>

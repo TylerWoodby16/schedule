@@ -12,15 +12,27 @@ import { useState } from "react";
 import Airplane from "./AircraftThumb";
 
 function Maintenance() {
-  
-  
   return (
     <>
-      <Airplane image={cessnaPhoto} name="Cessna" />
-
-      <Airplane image={archerPhoto} name="archer"/>
-
-      <Airplane image={seminolePhoto} name="seminole"/>
+      <Container>
+        <Col>
+          <Row className="mb-1">
+            <Col xxl={1} xl={2} lg={4} md={6} sm={8} xs={10}>
+              <Airplane image={cessnaPhoto} name="Cessna" />
+            </Col>
+          </Row>
+          <Row className="mb-1">
+            <Col xxl={1} xl={2} lg={4} md={6} sm={8} xs={10}>
+              <Airplane image={archerPhoto} name="archer" />
+            </Col>
+          </Row>
+          <Row className="mb-1">
+            <Col xxl={1} xl={2} lg={4} md={6} sm={8} xs={10}>
+              <Airplane image={seminolePhoto} name="seminole" />
+            </Col>
+          </Row>
+        </Col>
+      </Container>
     </>
   );
 }

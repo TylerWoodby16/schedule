@@ -5,20 +5,24 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
+
 import { Formik, Field, Form as FormikForm, FormikHelpers } from "formik";
 
 interface Values {
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
 }
 
-const Login = () => {
+const Signup = () => {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>SignUp</h1>
       <Formik
         initialValues={{
+          firstName: "",
+          lastName: "",
           email: "",
           password: "",
         }}
@@ -44,6 +48,34 @@ const Login = () => {
           <FormikForm onSubmit={handleSubmit}>
             <Container>
               <Col className="mx-auto" lg={4} md={6} sm={8} xs={10}>
+                <Row className="mb-1">
+                  <Form.Group className="mb-3" controlId="formBasicFirstName">
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control
+                      name="firstName"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values["firstName"]}
+                      type="text"
+                      placeholder="Enter first name"
+                    />
+                  </Form.Group>
+                </Row>
+
+                <Row className="mb-1">
+                  <Form.Group className="mb-3" controlId="formBasicLastName">
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control
+                      name="lastName"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values["lastName"]}
+                      type="text"
+                      placeholder="Enter last name"
+                    />
+                  </Form.Group>
+                </Row>
+
                 <Row className="mb-1">
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
@@ -76,11 +108,6 @@ const Login = () => {
                   <Button type="submit">Submit</Button>
                 </Row>
               </Col>
-              <Nav className="justify-content-center" activeKey="/home">
-                <Nav.Item>
-                  <Nav.Link href="/forgotpassword">Forgot Password?</Nav.Link>
-                </Nav.Item>
-              </Nav>
             </Container>
           </FormikForm>
         )}
@@ -89,4 +116,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

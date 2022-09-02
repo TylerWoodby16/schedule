@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 
 function Footer() {
   return (
-    <Container className="text-left h6">
+    <Container className="text-center h6">
       <Row className="my-3">
         <Col>Copyright Tyler Woodby 2022</Col>
       </Row>

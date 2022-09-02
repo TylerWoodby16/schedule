@@ -5,20 +5,24 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
+
 import { Formik, Field, Form as FormikForm, FormikHelpers } from "formik";
 
 interface Values {
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
 }
 
-const Login = () => {
+const ForgotPassword = () => {
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>SignUp</h1>
+      <h1 style={{ textAlign: "center" }}>Forgot Password</h1>
       <Formik
         initialValues={{
+          firstName: "",
+          lastName: "",
           email: "",
           password: "",
         }}
@@ -46,7 +50,7 @@ const Login = () => {
               <Col className="mx-auto" lg={4} md={6} sm={8} xs={10}>
                 <Row className="mb-1">
                   <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label>Send Message to Email</Form.Label>
                     <Form.Control
                       name="email"
                       onChange={handleChange}
@@ -58,29 +62,10 @@ const Login = () => {
                   </Form.Group>
                 </Row>
 
-                <Row className="mb-1">
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                      name="password"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values["password"]}
-                      type="password"
-                      placeholder="Enter your password"
-                    />
-                  </Form.Group>
-                </Row>
-
                 <Row>
                   <Button type="submit">Submit</Button>
                 </Row>
               </Col>
-              <Nav className="justify-content-center" activeKey="/home">
-                <Nav.Item>
-                  <Nav.Link href="/forgotpassword">Forgot Password?</Nav.Link>
-                </Nav.Item>
-              </Nav>
             </Container>
           </FormikForm>
         )}
@@ -89,4 +74,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;
