@@ -11,15 +11,18 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import Airplane from "./AircraftThumb";
 
+
 function Maintenance() {
   return (
     <>
       <Container>
         <Col>
           <Row className="mb-1">
-            <Col xxl={1} xl={2} lg={4} md={6} sm={8} xs={10}>
-              <Airplane image={cessnaPhoto} name="Cessna" />
-            </Col>
+            <Button variant="outline-secondary">
+              <Col xxl={1} xl={2} lg={4} md={6} sm={8} xs={10}>
+                <Airplane image={cessnaPhoto} name="Cessna" />
+              </Col>
+            </Button>
           </Row>
           <Row className="mb-1">
             <Col xxl={1} xl={2} lg={4} md={6} sm={8} xs={10}>

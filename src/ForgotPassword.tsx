@@ -16,6 +16,8 @@ interface Values {
 }
 
 const ForgotPassword = () => {
+  // TODO: Validate email here using YUP.
+
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Forgot Password</h1>

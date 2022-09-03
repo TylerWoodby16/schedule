@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
+import { Link } from "react-router-dom";
 import { Formik, Field, Form as FormikForm, FormikHelpers } from "formik";
 
 interface Values {
@@ -76,9 +77,10 @@ const Login = () => {
                   <Button type="submit">Submit</Button>
                 </Row>
               </Col>
+
               <Nav className="justify-content-center" activeKey="/home">
                 <Nav.Item>
-                  <Nav.Link href="/forgotpassword">Forgot Password?</Nav.Link>
+                  <Nav.Link as={Link} to="/forgotpassword">Forgot Password?</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Container>

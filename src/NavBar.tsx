@@ -9,12 +9,13 @@ function NavBar() {
   const location = useLocation();
 
   // If our path == "/", hide all Nav.Links except for Login
+  // TODO: Hide other links when on signup and login.
 
   return (
     <>
         <Navbar bg="light" expand="lg">
           <Container>
-            <Navbar.Brand as={Link} to="/schedule" className={location.pathname != "/" ? "" : "d-none"}>
+            <Navbar.Brand as={Link} to="/schedule">
               Flight-Schedule
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -26,7 +27,7 @@ function NavBar() {
                 <Nav.Link as={Link} to="/profile" className={location.pathname != "/"  ? "" : "d-none"}>
                   Profile
                 </Nav.Link>
-                <Nav.Link as={Link} to="/maintenance" className={location.pathname != "/" ? "" : "d-none"}>
+                <Nav.Link as={Link} to="/maintenance" className={location.pathname != "/" && location.pathname != "/signup" ? "" : "d-none"}>
                   Maintenance
                 </Nav.Link>
                 <Nav.Link as={Link} to="/signup">
