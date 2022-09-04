@@ -8,7 +8,6 @@ import Form from "react-bootstrap/Form";
 import * as Yup from "yup";
 import { Formik, Field, Form as FormikForm, FormikHelpers } from "formik";
 
-//TODO: display form validation errors for all other fields
 
 interface Values {
   firstName: string;
@@ -29,16 +28,14 @@ const Signup = () => {
       .max(50, "Too Long!")
       .required("Required"),
     email: Yup.string().email("Invalid email").required("Required"),
-    password: Yup
-      .string()
+    password: Yup.string()
       .required("Please Enter your password")
       .matches(
         /^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$/,
         "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
       ),
-    confirmPassword: Yup
-      .string()
-      .required()
+    confirmPassword: Yup.string()
+      .required("Please Confirm your password")
       .oneOf([Yup.ref("password"), null], "Passwords must match"),
   });
 
@@ -106,6 +103,11 @@ const Signup = () => {
                       type="text"
                       placeholder="Enter last name"
                     />
+                    {errors.lastName && touched.lastName ? (
+                      <div className="text-danger">
+                        <small>{errors.lastName}</small>
+                      </div>
+                    ) : null}
                   </Form.Group>
                 </Row>
 
@@ -120,6 +122,11 @@ const Signup = () => {
                       type="email"
                       placeholder="Enter your email"
                     />
+                    {errors.email && touched.email ? (
+                      <div className="text-danger">
+                        <small>{errors.email}</small>
+                      </div>
+                    ) : null}
                   </Form.Group>
                 </Row>
 
@@ -134,11 +141,19 @@ const Signup = () => {
                       type="password"
                       placeholder="Enter your password"
                     />
+                    {errors.password && touched.password ? (
+                      <div className="text-danger">
+                        <small>{errors.password}</small>
+                      </div>
+                    ) : null}
                   </Form.Group>
                 </Row>
 
                 <Row className="mb-1">
-                  <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
+                  <Form.Group
+                    className="mb-3"
+                    controlId="formBasicConfirmPassword"
+                  >
                     <Form.Label>Confirm Password</Form.Label>
                     <Form.Control
                       name="confirmPassword"
@@ -148,6 +163,11 @@ const Signup = () => {
                       type="password"
                       placeholder="Confirm your password"
                     />
+                    {errors.confirmPassword && touched.confirmPassword ? (
+                      <div className="text-danger">
+                        <small>{errors.confirmPassword}</small>
+                      </div>
+                    ) : null}
                   </Form.Group>
                 </Row>
 

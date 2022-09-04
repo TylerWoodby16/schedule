@@ -17,7 +17,7 @@ interface Values {
 const Login = () => {
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>SignUp</h1>
+      <h1 style={{ textAlign: "center" }}>Login</h1>
       <Formik
         initialValues={{
           email: "",

@@ -8,8 +8,7 @@ import { useLocation } from 'react-router-dom';
 function NavBar() {
   const location = useLocation();
 
-  // If our path == "/", hide all Nav.Links except for Login
-  // TODO: Hide other links when on signup and login.
+
 
   return (
     <>
@@ -21,13 +20,13 @@ function NavBar() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link as={Link} to="/schedule" className={location.pathname != "/" ? "" : "d-none"}>
+                <Nav.Link as={Link} to="/schedule" className={location.pathname != "/" && location.pathname != "/signup" && location.pathname != "/login" ? "" : "d-none"}>
                   Schedule
                 </Nav.Link>
-                <Nav.Link as={Link} to="/profile" className={location.pathname != "/"  ? "" : "d-none"}>
+                <Nav.Link as={Link} to="/profile" className={location.pathname != "/" && location.pathname != "/signup" && location.pathname != "/login"  ? "" : "d-none"}>
                   Profile
                 </Nav.Link>
-                <Nav.Link as={Link} to="/maintenance" className={location.pathname != "/" && location.pathname != "/signup" ? "" : "d-none"}>
+                <Nav.Link as={Link} to="/maintenance" className={location.pathname != "/" && location.pathname != "/signup" && location.pathname != "/login" ? "" : "d-none"}>
                   Maintenance
                 </Nav.Link>
                 <Nav.Link as={Link} to="/signup">
