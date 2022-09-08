@@ -6,8 +6,9 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import momPhoto from "./assets/mom.jpg";
+import Header from "./Header";
 
 // creates type for data of User
 type User = {
@@ -29,7 +30,7 @@ function Profile() {
   const [showEndorsements, setShowEndorsements] = useState(false);
   const [showCourseEnrollment, setShowCourseEnrollment] = useState(false);
   const [showNotes, setShowNotes] = useState(false);
-  // Creates data and properties for currentUser 
+  // Creates data and properties for currentUser
   const [currentUser, setCurrentUser] = useState<User>({
     name: "",
     email: "",
@@ -43,7 +44,7 @@ function Profile() {
   });
 
   useEffect(() => {
-    // creating the variable user 
+    // creating the variable user
     const user: User = {
       name: "tyler",
       email: "tylerWoodby",
@@ -100,24 +101,38 @@ function Profile() {
 
   return (
     <Container>
+      <Header />
       <Row>
-        <Col className="h1">Profile</Col>
-        <Col className="m-1">
-          <Dropdown>
-            <Dropdown.Toggle variant="info" id="dropdown-basic">
-              Account Settings
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+        <Col lg={5}>
+          <Image fluid roundedCircle src={momPhoto} width="250" />
         </Col>
-        <Col className="m-1">
-          <label>search</label>
-          <input type="text" onChange={(e) => setQuery(e.target.value)} />
+
+        <Col>
+          <Row>
+            
+              <Col className="m-1">
+                <Dropdown>
+                  <Dropdown.Toggle variant="info" id="dropdown-basic">
+                    Account Settings
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">
+                      Another action
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">
+                      Something else
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Col>
+              <Col className="m-1">
+                <label>search</label>
+                <input type="text" onChange={(e) => setQuery(e.target.value)} />
+              </Col>
+            
+          </Row>
         </Col>
       </Row>
 
@@ -126,11 +141,7 @@ function Profile() {
           backgroundColor: "#E0E0E0",
         }}
       >
-        <Col lg={5}>
-          <Image src={momPhoto} width="100" />
-        </Col>
-
-        <Col>
+        <Container className={showMenu ? "" : "d-none"}>
           <Row>
             <Col>
               <p className="m-1">Name: {currentUser.name}</p>
@@ -138,78 +149,54 @@ function Profile() {
               <p className="m-1">Username: {currentUser.email}</p>
               <p className="m-1">Role: {currentUser.role}</p>
               <p className="m-1">Active: {currentUser.active}</p>
-            </Col>
-          </Row>
-        </Col>
-        <Col>
-          <Row>
-            <Col>
               <p className="m-1">Balance: {currentUser.balance}</p>
               <p className="m-1">Last Flight: {currentUser.lastflight}</p>
               <p className="m-1">Last Login: {currentUser.lastlogin}</p>
               <p className="m-1">Created {currentUser.created}</p>
             </Col>
-          </Row>
-        </Col>
-      </Row>
 
-      <Container className={showMenu ? "" : "d-none"}>
-        <Row>
-          <Col>
-            {" "}
-            <div className="d-grid gap-2">
-              <Button
-                onClick={() => documentClick()}
-                variant="secondary"
-                size="lg"
-              >
-                Documents
-              </Button>
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            {" "}
-            <div className="d-grid gap-2">
-              <Button
-                onClick={() => endorsementsClick()}
-                variant="secondary"
-                size="lg"
-              >
-                Endorsements
-              </Button>
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <div className="d-grid gap-2">
-              <Button
-                onClick={() => courseenrollmentClick()}
-                variant="secondary"
-                size="lg"
-              >
-                Course Enrollments
-              </Button>
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            {" "}
-            <div className="d-grid gap-2">
-              <Button
-                onClick={() => notesClick()}
-                variant="secondary"
-                size="lg"
-              >
-                Notes
-              </Button>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+            <Col>
+              {" "}
+              <div className="d-grid gap-2">
+                <Button
+                  onClick={() => documentClick()}
+                  variant="secondary"
+                  size="lg"
+                >
+                  Documents
+                </Button>
+              </div>{" "}
+              <div className="d-grid gap-2">
+                <Button
+                  onClick={() => endorsementsClick()}
+                  variant="secondary"
+                  size="lg"
+                >
+                  Endorsements
+                </Button>
+              </div>
+              <div className="d-grid gap-2">
+                <Button
+                  onClick={() => courseenrollmentClick()}
+                  variant="secondary"
+                  size="lg"
+                >
+                  Course Enrollments
+                </Button>
+              </div>{" "}
+              <div className="d-grid gap-2">
+                <Button
+                  onClick={() => notesClick()}
+                  variant="secondary"
+                  size="lg"
+                >
+                  Notes
+                </Button>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </Row>
 
       <Container className={showDocuments ? "" : "d-none"}>
         <Row>

@@ -71,7 +71,9 @@ const Signup = () => {
           isSubmitting,
         }) => (
           <FormikForm onSubmit={handleSubmit}>
-            <Container>
+            <Container  style={{
+      backgroundColor: "#E0E0E0", 
+    }}>
               <Col className="mx-auto" lg={4} md={6} sm={8} xs={10}>
                 <Row className="mb-1">
                   <Form.Group className="mb-3" controlId="formBasicFirstName">
