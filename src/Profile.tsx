@@ -110,8 +110,8 @@ function Profile() {
         <Col>
           <Row>
             
-              <Col className="m-1">
-                <Dropdown>
+              <Col className="mt-5">
+                <Dropdown className="mb-3">
                   <Dropdown.Toggle variant="info" id="dropdown-basic">
                     Account Settings
                   </Dropdown.Toggle>
@@ -127,7 +127,7 @@ function Profile() {
                   </Dropdown.Menu>
                 </Dropdown>
               </Col>
-              <Col className="m-1">
+              <Col className="mt-5">
                 <label>search</label>
                 <input type="text" onChange={(e) => setQuery(e.target.value)} />
               </Col>
@@ -143,7 +143,7 @@ function Profile() {
       >
         <Container className={showMenu ? "" : "d-none"}>
           <Row>
-            <Col>
+            <Col className="text-center" lg={3} md={4} sm={6} xs={8}>
               <p className="m-1">Name: {currentUser.name}</p>
               <p className="m-1">Phone: {currentUser.phone}</p>
               <p className="m-1">Username: {currentUser.email}</p>
@@ -198,9 +198,9 @@ function Profile() {
         </Container>
       </Row>
 
-      <Container className={showDocuments ? "" : "d-none"}>
+      <Container className={showDocuments ? "" : "d-none"} >
         <Row>
-          <Col>
+          <Col lg={6} md={6} sm={8} xs={10}>
             <Button onClick={() => backClick()} variant="secondary" size="lg">
               Back
             </Button>
