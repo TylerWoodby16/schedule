@@ -71,7 +71,7 @@ const Signup = () => {
           isSubmitting,
         }) => (
           <FormikForm onSubmit={handleSubmit}>
-            <Container  style={{
+            <Container className="mx-auto ml=1 mr=5" style={{
       backgroundColor: "#E0E0E0", 
     }}>
               <Col className="mx-auto" lg={4} md={6} sm={8} xs={10}>

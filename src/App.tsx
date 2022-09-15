@@ -11,6 +11,7 @@ import Signup from "./Signup";
 import Login from "./Login";
 import Landing from "./Landing";
 import ForgotPassword from "./ForgotPassword";
+import Backend from "./Backend";
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/backend" element={<Backend />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/" element={<Landing />} />
       </Routes>
