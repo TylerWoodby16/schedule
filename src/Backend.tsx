@@ -17,6 +17,9 @@ const Backend: React.FC = () => {
   const [backendString, setBackendString] = useState<string>("");
   const [basicPost, setBasicPost] = useState<string>("");
   const [basicInput, setBasicInput] = useState<string>("");
+  const [id, setId] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [registration, setRegistration] = useState<string>("");
 
   const getData = async () => {
     // This is a clearer way of doing the below. The second axios call here
@@ -51,10 +54,19 @@ const Backend: React.FC = () => {
   const postRequestBasic = async () => {
     // We get an object that looks like {data:}
     const { data } = await axios.post<string>(
-      `http://localhost:3001/aircrafts`,
-      {id: basicInput}, // thiis is the request body
+      `http://localhost:3001/aircrafts/test`,
+      { id: basicInput } // this is the request body
     );
     setBasicPost(data);
+  };
+
+  const postAircraft = async () => {
+    // We get an object that looks like {data:}
+    const { data } = await axios.post<Aircraft[]>(
+      `http://localhost:3001/aircrafts`,
+      { id: id, name: name, registration: registration } // this is the request body
+    );
+    setObjects(data);
   };
 
   useEffect(() => {
@@ -97,6 +109,60 @@ const Backend: React.FC = () => {
         <Col>
           <input type="text" onChange={(e) => setBasicInput(e.target.value)} />
           <button onClick={() => postRequestBasic()}>post</button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          {/*Ternary operator: condition ? what to do if true : what to do if false
+        Basically equivalent to:
+        if(condition) {
+          what to do if true
+        } else {
+          what to do if false
+        }
+        */}
+          {parseInt(basicInput) >= 7
+            ? "greater than or equal to 7"
+            : "less than 7"}
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          {/*Ternary operator: condition ? what to do if true : what to do if false
+        Basically equivalent to:
+        if(condition) {
+          what to do if true
+        } else {
+          what to do if false
+        }
+        */}
+          {parseInt(basicInput) >= 7 ? (
+            <div>
+              <button>winner</button>
+            </div>
+          ) : (
+            <div>:(</div>
+          )}
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
+          <input type="text" onChange={(e) => setId(e.target.value)} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <input type="text" onChange={(e) => setName(e.target.value)} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <input
+            type="text"
+            onChange={(e) => setRegistration(e.target.value)}
+          />
+          <button onClick={() => postAircraft()}>insert aircraft</button>
         </Col>
       </Row>
     </Container>
