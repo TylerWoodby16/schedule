@@ -20,6 +20,7 @@ const Backend: React.FC = () => {
   const [id, setId] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [registration, setRegistration] = useState<string>("");
+  const [showError, setShowError] = useState(false);
 
   const getData = async () => {
     // This is a clearer way of doing the below. The second axios call here
@@ -69,6 +70,30 @@ const Backend: React.FC = () => {
     setObjects(data);
   };
 
+  const putAircraft = async () => {
+    // We get an object that looks like {data:}
+    const { data } = await axios.put<Aircraft[]>(
+      `http://localhost:3001/aircrafts/${id}`,
+      { id: id, name: name, registration: registration } // this is the request body
+    );
+    setObjects(data);
+  };
+
+  const deleteAircraft = async () => {
+    // We get an object that looks like {data:}
+    try{
+      const { data } = await axios.delete<Aircraft[]>(
+        `http://localhost:3001/aircrafts/${id}`,
+         // this is the request body
+      );
+        setShowError(false);
+      setObjects(data);
+    } catch(err) {
+      setShowError(true);
+    }
+    
+  };
+
   useEffect(() => {
     getData();
     getAircrafts();
@@ -105,7 +130,8 @@ const Backend: React.FC = () => {
       <Row className="my-3">
         <Col>{basicPost}</Col>
       </Row>
-      <Row>
+
+      <Row className="mt-4">
         <Col>
           <input type="text" onChange={(e) => setBasicInput(e.target.value)} />
           <button onClick={() => postRequestBasic()}>post</button>
@@ -146,6 +172,7 @@ const Backend: React.FC = () => {
         </Col>
       </Row>
 
+      <Row className="mt-4">POST</Row>
       <Row>
         <Col>
           <input type="text" onChange={(e) => setId(e.target.value)} />
@@ -163,6 +190,43 @@ const Backend: React.FC = () => {
             onChange={(e) => setRegistration(e.target.value)}
           />
           <button onClick={() => postAircraft()}>insert aircraft</button>
+        </Col>
+      </Row>
+
+      <Row className="mt-4">PUT</Row>
+      <Row>
+        <Col>
+          id: <input type="text" onChange={(e) => setId(e.target.value)} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          name: <input type="text" onChange={(e) => setName(e.target.value)} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          reg:{" "}
+          <input
+            type="text"
+            onChange={(e) => setRegistration(e.target.value)}
+          />
+          <button onClick={() => putAircraft()}>update aircraft</button>
+        </Col>
+      </Row>
+      <Row className="mt-4">Delete</Row>
+      
+      <Container className={showError ? "" : "d-none"}>
+      <Row>
+        <Col>
+          THERE WAS AN ERROR
+        </Col>
+      </Row>
+      </Container>
+      <Row>
+        <Col>
+          reg: id: <input type="text" onChange={(e) => setId(e.target.value)} />
+          <button onClick={() => deleteAircraft()}>update aircraft</button>
         </Col>
       </Row>
     </Container>
