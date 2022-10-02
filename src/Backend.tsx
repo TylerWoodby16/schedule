@@ -86,7 +86,8 @@ const Backend: React.FC = () => {
         `http://localhost:3001/aircrafts/${id}`,
          // this is the request body
       );
-        setShowError(false);
+      
+      setShowError(false);
       setObjects(data);
     } catch(err) {
       setShowError(true);

@@ -15,28 +15,26 @@ import Header from "./Header";
 function Maintenance() {
   return (
     <>
-    <Header/>
+      <Header />
       <Container>
-        <Col>
-          <Row className="m-1">
-            <Col xxl={1} xl={2} lg={1} md={6} sm={8} xs={10} className="m-1">
-              <Button className="m-5" variant="outline-secondary">
-                <Airplane image={cessnaPhoto} name="Cessna" />
-              </Button>
-            </Col>
-
-            <Col xxl={1} xl={2} lg={3} md={6} sm={8} xs={10} className="m-1">
-            <Button className="m-5" variant="outline-secondary">
+        <Row className="m-1">
+          <Col xxl={1} xl={2} lg={1} md={6} sm={8} xs={10} className="m-1">
+            {/* <Button className="m-5" variant="outline-secondary"> */}
+              <Airplane image={cessnaPhoto} name="Cessna" />
+            {/* </Button> */}
+          </Col>
+        
+          <Col xxl={1} xl={2} lg={3} md={6} sm={8} xs={10} className="m-1">
+            {/* <Button className="m-5" variant="outline-secondary"> */}
               <Airplane image={archerPhoto} name="archer" />
-              </Button>
-            </Col>
-          </Row>
-          <Row className="mb-1">
-            <Col xxl={1} xl={2} lg={4} md={6} sm={8} xs={10}>
-              <Airplane image={seminolePhoto} name="seminole" />
-            </Col>
-          </Row>
-        </Col>
+            {/* </Button> */}
+          </Col>
+        </Row>
+        <Row className="mb-1">
+          <Col xxl={1} xl={2} lg={4} md={6} sm={8} xs={10}>
+            <Airplane image={seminolePhoto} name="seminole" />
+          </Col>
+        </Row>
       </Container>
     </>
   );
